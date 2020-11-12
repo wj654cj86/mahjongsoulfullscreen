@@ -15,7 +15,6 @@
 			left: 0px;
 			width: 100%;
 			height: 100%;
-			opacity: 0;
 		}
 
 		#startgame {
@@ -26,7 +25,7 @@
 			width: 160px;
 			height: 30px;
 			transform-origin: 0px 0px;
-			z-index: -3;
+			z-index: 3;
 		}
 	</style>
 	<script type="text/javascript">
@@ -36,43 +35,34 @@
 			startgame.style.transform = 'scale(' + fm + ',' + fm + ')';
 			startgame.style.marginTop = -fm * 30 / 2 + 'px';
 			startgame.style.marginLeft = -fm * 160 / 2 + 'px';
-			if (document.fullScreen) {
-			} else {
-				startgame.style.zIndex = 3;
-				if (typeof iframe != 'undefined') {
-					iframe.style.opacity = 0;
-				}
-			}
 		}
 		let iframe;
 		window.onload = function () {
 			document.body.onresize = setfoundation;
+			if (typeof iframe == 'undefined') {
+				iframe = document.createElement('iframe');
+				iframe.src = 'https://game.maj-soul.com/1/';
+				iframe.frameBorder = 0;
+				document.body.appendChild(iframe);
+			}
 			setfoundation();
 			startgame.onclick = function () {
-				if (document.documentElement.requestFullscreen) {
-					document.documentElement.requestFullscreen();
-				} else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
-					document.documentElement.mozRequestFullScreen();
-				} else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-					document.documentElement.webkitRequestFullscreen();
-				} else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
-					document.documentElement.msRequestFullscreen();
+				if (iframe.requestFullscreen) {
+					iframe.requestFullscreen();
+				} else if (iframe.mozRequestFullScreen) { /* Firefox */
+					iframe.mozRequestFullScreen();
+				} else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+					iframe.webkitRequestFullscreen();
+				} else if (iframe.msRequestFullscreen) { /* IE/Edge */
+					iframe.msRequestFullscreen();
 				}
-				if (typeof iframe == 'undefined') {
-					iframe = document.createElement('iframe');
-					iframe.src = 'https://game.maj-soul.com/1/';
-					iframe.frameBorder = 0;
-					document.body.appendChild(iframe);
-				}
-				startgame.style.zIndex = -3;
-				iframe.style.opacity = 1;
 			};
 		};
 	</script>
 </head>
 
 <body>
-	<input id="startgame" type="button" value="遊戲開始（要按2下）" />
+	<input id="startgame" type="button" value="遊戲開始" />
 </body>
 
 </html>
