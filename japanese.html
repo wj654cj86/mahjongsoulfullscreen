@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta charset="UTF-8">
 	<title>雀魂全螢幕</title>
 	<link href="icon.png" rel="icon">
 	<style>
@@ -41,7 +41,7 @@
 				iframe = document.createElement('iframe');
 				iframe.src = 'https://game.mahjongsoul.com';
 				iframe.frameBorder = 0;
-				document.body.appendChild(iframe);
+				document.body.append(iframe);
 			}
 			setfoundation();
 			startgame.onclick = function () {
