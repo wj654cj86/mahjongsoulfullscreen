@@ -35,7 +35,7 @@
 			startgame.style.marginLeft = -fm * 160 / 2 + 'px';
 		}
 		let iframe;
-		window.onload = function () {
+		window.onload = () => {
 			document.body.onresize = setfoundation;
 			if (typeof iframe == 'undefined') {
 				iframe = document.createElement('iframe');
@@ -44,15 +44,13 @@
 				document.body.append(iframe);
 			}
 			setfoundation();
-			startgame.onclick = function () {
+			startgame.onclick = () => {
 				if (iframe.requestFullscreen) {
 					iframe.requestFullscreen();
 				} else if (iframe.mozRequestFullScreen) { /* Firefox */
 					iframe.mozRequestFullScreen();
-				} else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+				} else if (iframe.webkitRequestFullscreen) { /* Chrome, Edge */
 					iframe.webkitRequestFullscreen();
-				} else if (iframe.msRequestFullscreen) { /* IE/Edge */
-					iframe.msRequestFullscreen();
 				}
 			};
 		};
