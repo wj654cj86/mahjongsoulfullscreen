@@ -34,15 +34,12 @@
 			startgame.style.marginTop = -fm * 30 / 2 + 'px';
 			startgame.style.marginLeft = -fm * 160 / 2 + 'px';
 		}
-		let iframe;
 		window.onload = () => {
 			document.body.onresize = setfoundation;
-			if (typeof iframe == 'undefined') {
-				iframe = document.createElement('iframe');
-				iframe.src = 'https://game.mahjongsoul.com';
-				iframe.frameBorder = 0;
-				document.body.append(iframe);
-			}
+			let iframe = document.createElement('iframe');
+			iframe.src = 'https://game.mahjongsoul.com';
+			iframe.frameBorder = 0;
+			document.body.append(iframe);
 			setfoundation();
 			startgame.onclick = () => {
 				if (iframe.requestFullscreen) {

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta charset="UTF-8">
+	<title>雀魂全螢幕</title>
+	<link href="icon.png" rel="icon">
+	<style>
+		iframe {
+			position: absolute;
+			top: calc(var(--y)*var(--h));
+			left: 0px;
+			width: 100%;
+			height: var(--h);
+		}
+	</style>
+	<script>
+		let url2obj = () => Object.fromEntries(new URLSearchParams(location.search));
+		let obj = url2obj();
+		let count = 0;
+		let newIframe = src => {
+			let iframe = document.createElement('iframe');
+			iframe.src = src;
+			iframe.frameBorder = 0;
+			iframe.setAttribute("style", `--y:${count};`);
+			document.body.append(iframe);
+			count++;
+		};
+		window.onload = () => {
+			if (obj.jp === '1') { newIframe('https://game.mahjongsoul.com'); }
+			if (obj.cn === '1') { newIframe('https://game.maj-soul.com/1/'); }
+			if (obj.en === '1') { newIframe('https://mahjongsoul.game.yo-star.com'); }
+
+			document.body.setAttribute("style", `--h:${100 / count}%;`);
+		};
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
